@@ -1,0 +1,136 @@
+
+.contestspage-div-main{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 92vh;
+}
+
+.contestspage-div-one{
+    padding: 20px;
+    height:100%;
+
+}
+
+.contestspage-div-two{
+    padding: 20px;
+    height:100%;
+}
+
+.secondDivComponent-main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 100px;
+    height: 100%;
+}
+.contestPage-rank-item-main{
+    display: flex;
+    margin-bottom: 10px;
+}
+.contestPage-rank-item-main > div:nth-child(2) > p{
+    margin: 0px;
+}
+
+.submissions-for-task-main{
+    margin: 2px 0px;
+    padding: 0px 5px;
+    display: flex;
+    justify-content: space-between;
+    background-color: lightgray;
+}
+.submissions-for-task-main:hover{
+    background-color: gray;
+}
+
+.submissions-for-task-main > div>  p{
+    margin: 0px;
+}
+.submissions-for-task-main > div{
+    padding: 2px; 
+}
+.testpage-submission-detail-main{
+    max-width: 600px;
+}
+.contestpage-submission-detail{
+    margin: 10px;
+    height: 600px;
+    overflow: auto;
+    padding: 10px 0px;
+
+}
+.secondDiv-contests-main{
+}
+.secondDiv-contest-groups{
+}
+.secondDiv-contest-groups-item{
+    /* border: 1px dashed black; */
+    margin: 2px 0px;
+    padding: 2px;
+    background-color: lightgray;
+
+}
+.secondDiv-contest-groups-item:hover{
+    background-color: gray;
+
+}
+.secondDiv-contest-groups > div > p{
+    margin: 0px;
+}
+.seconddiv-contest-groupuser{
+    display: flex;
+    justify-content: space-between;
+    background-color: lightgray;
+    margin: 2px 0px;
+    padding: 2px 5px;
+
+}
+.seconddiv-contest-groupuser:hover{
+    background-color: gray;
+}
+.seconddiv-contest-groupuser > p{
+    margin: 0px;
+}
+
+.seconddiv-contest-groupuser-p{
+    color: blue;
+    font-size: 11px;
+    margin: 0px;
+}
+.seconddiv-contest-groupuser-p:hover{
+    color:white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.drawer-main-div{
+    padding: 10px;
+    /* background-color: pink; */
+    overflow-y: scroll;
+    height: 800px;
+}
+.drawer-svg:hover{
+    width: 25;
+    height: 25;
+}
+
+.drawer-submission-item{
+    background-color: lightblue;
+    margin: 4px;
+    padding: 4px;
+}
+.drawer-submission-item > p{
+    margin:0px;
+}
+
+
+
+
+/*border*/
+
+/* .contestspage-div-one{
+    border-top: 1px dashed;
+    border-right: 1px dashed;
+
+}
+
+.contestspage-div-two{
+    border-top: 1px dashed;
+} */

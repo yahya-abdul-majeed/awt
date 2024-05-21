@@ -1,0 +1,8 @@
+.submissionPage-main-div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 5px;
+}
+.submissionPage-second-child-div{
+    padding: 0px 15px;
+}

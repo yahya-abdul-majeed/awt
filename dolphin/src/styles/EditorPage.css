@@ -1,0 +1,33 @@
+.editorpage-main-div{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.editorpage-submission-item-main{
+    display: flex;
+    /* border-bottom: 1px dashed black; */
+    margin-bottom: 2px;
+    background-color: lightgray;
+    padding: 0px 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+.editorpage-submission-item-main:hover{
+    /* background-color: rgb(0, 0, 0, 0.03); */
+    background-color: gray;
+    /* font-weight: bold; */
+}
+
+.editorpage-submission-item-main > div > p{
+    margin: 0px 20px;
+}
+.editorpage-submission-item-main > div:nth-child(3) > svg:hover {
+    width: 50px;
+    height: 50px;
+}
+.editorpage-submission-item-main > h5{
+}
+
+*{
+    font-family: 'Courier New', Courier, monospace;
+}

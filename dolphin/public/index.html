@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/color.css">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="stylesheet" href="./datatables.min.css"/>
+    <link rel="stylesheet" href="./index.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.snow.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0-rc.2/dist/quill.js"></script>
+    <script type="text/javascript" src="./jquery.js"></script>
+    <script type="text/javascript" src="./easui.js"></script>
+    <script type="text/javascript" src="./ContestWindowScript.js"></script>
+    <script type="text/javascript" src="./GroupWindowScript.js"></script>
+    <script type="text/javascript" src="./AssignmentWindowScript.js"></script>
+
+    </script>
+    <!-- <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script> -->
+
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Dolphin</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <div id="root2" style="display:none">
+        
+
+        <!--Contest window begins-->
+        <div id="winContest" title="Contests" minimizable='false' style="display:none;">
+          <div id="winNavbar">
+            <p id="contest-create-link-navbar">Create</p>
+            <p id="contest-edit-link-navbar">Edit</p>
+          </div>
+          <div id="winContest-body" style="display:none">
+          <div style="margin:10px;">
+            <div id="refresh-contest-create">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 40 40">
+                <path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M4.207,35.5l2.573-2.574l-0.328-0.353	C3.259,29.143,1.5,24.677,1.5,20C1.5,9.799,9.799,1.5,20,1.5c0.776,0,1.598,0.062,2.5,0.19v4.032C21.661,5.575,20.823,5.5,20,5.5	C12.005,5.5,5.5,12.005,5.5,20c0,3.578,1.337,7.023,3.765,9.701l0.353,0.389l2.883-2.883V35.5H4.207z"></path><path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M20,38.5c-0.776,0-1.598-0.062-2.5-0.19v-4.032	c0.839,0.147,1.677,0.222,2.5,0.222c7.995,0,14.5-6.505,14.5-14.5c0-3.583-1.336-7.03-3.761-9.706l-0.353-0.389L27.5,12.793V4.5	h8.293l-2.581,2.582l0.328,0.354C36.738,10.872,38.5,15.334,38.5,20C38.5,30.201,30.201,38.5,20,38.5z"></path>
+              </svg>
+            </div>
+            <h3>Create contest:</h3>
+            <form id="contestForm" onsubmit="onSubmitHandler(event)">
+              <label>Name: </label><br/>
+              <input type="text" id="contestName"/><br/> 
+              <label>Description: </label><br/>
+              <textarea id="contestDescription"></textarea><br/>
+              <input type="checkbox" id="publish"/>
+              <label for="publish">Publish now</label><br/> 
+              <label for="opening-time">Opening time:</label><br/>
+              <input
+                type="datetime-local"
+                id="opening-time"
+                name="opening-time"
+                />
+                <br/>
+              <label for="closing-time">Closing time:</label><br/>
+              <input
+                type="datetime-local"
+                id="closing-time"
+                name="closing-time"
+                />
+                <br/><br/>
+              <label for="contest-select">Duplicate assignments?</label>
+
+              <select name="contests" id="contest-select">
+                <option value="">--none--</option>
+              </select>
+                <br/>
+                <br/>
+                <input type="submit" value="Create">
+            </form>
+          </div>
+
+          <div id="groupchooser">
+            <fieldset id="group-fieldset">
+              <legend>Choose Groups:</legend>
+              <div id="group-fieldset-main-div">
+
+              </div>
+            </fieldset>
+          </div>
+
+          <div id="assignments-section">
+            <div id="local-assignments">
+              <h4>Local assignments</h4>
+              <div id="local-assignments-items">
+              </div>
+            </div>
+
+            <div id="remote-assignments">
+              <h4>Remote assignments</h4>
+              <div id="remote-assignments-items">
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div id="winContest-body-edit">
+
+          <div id="edit-contest-chooser">
+            <div id="refresh-edit-contest">
+              <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 40 40">
+                <path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M4.207,35.5l2.573-2.574l-0.328-0.353	C3.259,29.143,1.5,24.677,1.5,20C1.5,9.799,9.799,1.5,20,1.5c0.776,0,1.598,0.062,2.5,0.19v4.032C21.661,5.575,20.823,5.5,20,5.5	C12.005,5.5,5.5,12.005,5.5,20c0,3.578,1.337,7.023,3.765,9.701l0.353,0.389l2.883-2.883V35.5H4.207z"></path><path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M20,38.5c-0.776,0-1.598-0.062-2.5-0.19v-4.032	c0.839,0.147,1.677,0.222,2.5,0.222c7.995,0,14.5-6.505,14.5-14.5c0-3.583-1.336-7.03-3.761-9.706l-0.353-0.389L27.5,12.793V4.5	h8.293l-2.581,2.582l0.328,0.354C36.738,10.872,38.5,15.334,38.5,20C38.5,30.201,30.201,38.5,20,38.5z"></path>
+              </svg>
+            </div>
+            <div style="margin:10px 0px;">
+              <h4 style="margin: 5px 0px;">Choose contest to edit:</h4><br/>
+              <select name="contests" id="edit-contest-select" onchange="editContestSelectorOnChangeHandler(event)">
+                <option value="">--none--</option>
+              </select>
+              <br/><br/>
+              <!--form start-->
+              <div id="edit-contest-contestvieweer" >
+                <form id="contestEditForm">
+                  <label>Id: </label><br/>
+                  <input type="text" id="contestEditId" disabled/><br/> 
+                  <label>Name: </label><br/>
+                  <input type="text" id="contestEditName"/><br/> 
+                  <label>Description: </label><br/>
+                  <textarea id="contestEditDescription"></textarea><br/>
+                  <input type="checkbox" id="Editpublish"/>
+                  <label for="Editpublish">Publish now</label><br/> 
+                  <label for="edit-opening-time">Opening time:</label><br/>
+                  <input
+                    type="datetime-local"
+                    id="edit-opening-time"
+                    name="opening-time"
+                    />
+                    <br/>
+                  <label for="edit-closing-time">Closing time:</label><br/>
+                  <input
+                    type="datetime-local"
+                    id="edit-closing-time"
+                    name="closing-time"
+                    />
+                    <br/><br/>
+                </form>
+              </div>
+              
+              <!--form end-->
+              <button onclick="editContestOnClickHandler()">Update</button>
+              <button id="DeleteContestBtn">Delete</button>
+            </div>
+          </div>
+
+
+          <div id="edit-contest-addremove-groups" style="margin: 10px;">
+            <h3>Groups</h3>
+            <div id="edit-contest-addremove-groups-items">
+
+            </div>
+          </div>
+
+          <div id="edit-contest-assignments" style="margin: 10px;">
+            <h3>Assignemnts</h3>
+            <div id="edit-contest-assignments-items">
+            </div>
+          </div>
+
+        </div>
+
+        </div>
+
+        <!--Contest window ends-->
+        <!--Group window begins-->
+
+        <div id="winGroup" title="Groups" minimizable='false' style="display:none">
+          <div id="winNavbar">
+            <p id="group-create-link-navbar">Create</p>
+            <p id="group-edit-link-navbar">Edit</p>
+          </div>
+          <div id="winGroup-body" style="display:none">
+
+            <div style="margin:10px;">
+              <div id="refresh-group-create">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 40 40">
+                  <path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M4.207,35.5l2.573-2.574l-0.328-0.353	C3.259,29.143,1.5,24.677,1.5,20C1.5,9.799,9.799,1.5,20,1.5c0.776,0,1.598,0.062,2.5,0.19v4.032C21.661,5.575,20.823,5.5,20,5.5	C12.005,5.5,5.5,12.005,5.5,20c0,3.578,1.337,7.023,3.765,9.701l0.353,0.389l2.883-2.883V35.5H4.207z"></path><path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M20,38.5c-0.776,0-1.598-0.062-2.5-0.19v-4.032	c0.839,0.147,1.677,0.222,2.5,0.222c7.995,0,14.5-6.505,14.5-14.5c0-3.583-1.336-7.03-3.761-9.706l-0.353-0.389L27.5,12.793V4.5	h8.293l-2.581,2.582l0.328,0.354C36.738,10.872,38.5,15.334,38.5,20C38.5,30.201,30.201,38.5,20,38.5z"></path>
+                </svg>
+              </div>
+              <h3>Create Group:</h3>
+              <form id="groupForm" onsubmit="groupCreateSubmitHandler(event)">
+                <label>Name: </label><br/>
+                <input type="text" id="groupName"/><br/> 
+                <label>Description: </label><br/>
+                <textarea id="groupDescription"></textarea><br/>
+                <br/>
+                <input type="submit" value="Create">
+              </form>
+            </div>
+
+            <div id="add-users-list-parent">
+              <input id="user-search-box" type="search" onkeyup="searchUsers()"/>
+              <div id="add-users-list">
+              </div>
+            </div>
+
+            <div id="add-groups-list-parent">
+              <h4>Add users from group:</h4>
+              <div id="add-groups-list">
+              </div>
+            </div>
+
+
+          </div>
+
+          <div id="winGroup-body-edit">
+            <div style="margin: 10px;">
+              <div id="refresh-group-edit">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 40 40">
+                  <path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M4.207,35.5l2.573-2.574l-0.328-0.353	C3.259,29.143,1.5,24.677,1.5,20C1.5,9.799,9.799,1.5,20,1.5c0.776,0,1.598,0.062,2.5,0.19v4.032C21.661,5.575,20.823,5.5,20,5.5	C12.005,5.5,5.5,12.005,5.5,20c0,3.578,1.337,7.023,3.765,9.701l0.353,0.389l2.883-2.883V35.5H4.207z"></path><path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M20,38.5c-0.776,0-1.598-0.062-2.5-0.19v-4.032	c0.839,0.147,1.677,0.222,2.5,0.222c7.995,0,14.5-6.505,14.5-14.5c0-3.583-1.336-7.03-3.761-9.706l-0.353-0.389L27.5,12.793V4.5	h8.293l-2.581,2.582l0.328,0.354C36.738,10.872,38.5,15.334,38.5,20C38.5,30.201,30.201,38.5,20,38.5z"></path>
+                </svg>
+              </div>
+
+              <div id="group-edit-selector-parent" style="margin:10px 0px">
+                <div>
+                    <h4 style="margin: 5px 0px;">Choose group to edit:</h4><br/>
+                    <select name="groups" id="edit-group-select" onchange="editGroupSelectorOnChangeHandler(event)">
+                        <option value="">--none--</option>
+                    </select>
+                    <br/><br/>
+                </div>
+                <form id="groupEditForm" >
+                  <label>Id: </label><br/>
+                  <input type="text" id="groupEditId" disabled/><br/> 
+                  <label>Name: </label><br/>
+                  <input type="text" id="groupEditName"/><br/> 
+                  <label>Description: </label><br/>
+                  <textarea id="groupEditDescription"></textarea><br/>
+                  <br/>
+                </form>
+                <button id="group-edit-update-btn">Update</button>
+                <button id="group-edit-delete-btn">Delete</button>
+              </div>
+
+            </div>
+
+            <div id="group-edit-user-list-parent" style="margin: 10px;">
+              <div id="group-edit-user-list">
+
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <!--Group window ends-->
+
+        <!--Assignment window starts-->
+        <div id="winAssignment" title="Assignments" minimizable='false' style="display:none">
+          <div id="winNavbar">
+            <p id="assignment-create-link-navbar">Create</p>
+            <p id="assignment-edit-link-navbar">Edit</p>
+          </div>
+
+          <div id="winAssignment-body" style="display: none;">
+            
+            <div>
+              <div id="refresh-assignment-create">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 40 40">
+                  <path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M4.207,35.5l2.573-2.574l-0.328-0.353	C3.259,29.143,1.5,24.677,1.5,20C1.5,9.799,9.799,1.5,20,1.5c0.776,0,1.598,0.062,2.5,0.19v4.032C21.661,5.575,20.823,5.5,20,5.5	C12.005,5.5,5.5,12.005,5.5,20c0,3.578,1.337,7.023,3.765,9.701l0.353,0.389l2.883-2.883V35.5H4.207z"></path><path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M20,38.5c-0.776,0-1.598-0.062-2.5-0.19v-4.032	c0.839,0.147,1.677,0.222,2.5,0.222c7.995,0,14.5-6.505,14.5-14.5c0-3.583-1.336-7.03-3.761-9.706l-0.353-0.389L27.5,12.793V4.5	h8.293l-2.581,2.582l0.328,0.354C36.738,10.872,38.5,15.334,38.5,20C38.5,30.201,30.201,38.5,20,38.5z"></path>
+                </svg>
+              </div>
+
+              <h3>Choose remote parent</h3>
+              <div id="assignment-create-list-items">
+
+              </div>
+
+            </div>
+
+            <div id="assignment-create-list" style="margin-left: 20px;">
+              <div id="assignment-create-form-main" style="margin: 10px 0px;">
+                <label>Name:</label><br/>
+                <input id="editAssignmentName" type="text"/><br/>
+                <label>Parent assignment:</label><br/>
+                <input id="editAssignmentParent" type="text" disabled/><br/>
+                <label>Points:</label> <br/>
+                <input id="editAssignmentPoints" type="number"/><br/>
+                <label>Website:</label> <br/>
+                <input id="editAssignmentWebsite" type="text" readonly/><br/><br/>
+                <div id="editor">
+                  <p>Enter description for assignment...</p>
+                  <p><br /></p>
+                </div>
+                <br/>
+                <button id="assignment-create-button">Create</button>
+                <br/>
+              </div>
+            </div>
+          </div>
+
+          <div id="winAssignment-body-edit">
+            <div id="edit-assignment-chooser-main">
+              <div id="refresh-assignment-edit">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="15" height="15" viewBox="0 0 40 40">
+                  <path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M4.207,35.5l2.573-2.574l-0.328-0.353	C3.259,29.143,1.5,24.677,1.5,20C1.5,9.799,9.799,1.5,20,1.5c0.776,0,1.598,0.062,2.5,0.19v4.032C21.661,5.575,20.823,5.5,20,5.5	C12.005,5.5,5.5,12.005,5.5,20c0,3.578,1.337,7.023,3.765,9.701l0.353,0.389l2.883-2.883V35.5H4.207z"></path><path fill="#dff0fe" stroke="#4788c7" stroke-miterlimit="10" d="M20,38.5c-0.776,0-1.598-0.062-2.5-0.19v-4.032	c0.839,0.147,1.677,0.222,2.5,0.222c7.995,0,14.5-6.505,14.5-14.5c0-3.583-1.336-7.03-3.761-9.706l-0.353-0.389L27.5,12.793V4.5	h8.293l-2.581,2.582l0.328,0.354C36.738,10.872,38.5,15.334,38.5,20C38.5,30.201,30.201,38.5,20,38.5z"></path>
+                </svg>
+              </div>
+
+              <div id="edit-assignment-chooser" style="margin: 10px 0px;">
+                <h3>Choose an assignment</h3>
+                <select id="edit-assignment-selector">
+                  <option value="">--none--</option>
+                </select>
+              </div>
+              <br/>
+              <button id="assignment-update-button">Update</button>
+              <button id="assignment-delete-button">Delete</button>
+
+
+            </div>
+
+            <div>
+              <h3>Contests using this assignment</h3>
+              <div id="edit-assignment-contests-list">
+
+              </div>
+            </div>
+
+            <div id="edit-assignment-form-main" style="margin: 10px;">
+              <div style="max-width: 400px;">
+                <label>Id:</label><br/>
+                <input id="editAssignmentId2" type="number" disabled/><br/>
+                <label>Name:</label><br/>
+                <input id="editAssignmentName2" type="text"/><br/>
+                <label>Parent assignment:</label><br/>
+                <input id="editAssignmentParent2" type="text" disabled/><br/>
+                <label>Points:</label> <br/>
+                <input id="editAssignmentPoints2" type="number"/><br/>
+                <label>Website:</label> <br/>
+                <input id="editAssignmentWebsite2" type="text" readonly/><br/><br/>
+                <div id="editor2">
+                  <p>Enter description for assignment...</p>
+                  <p><br /></p>
+                </div>
+                <br/>
+                <br/>
+              </div>
+            </div>
+            
+          </div>
+
+        </div>
+
+        <!--Assignment window ends-->
+
+
+        <!--testing area starts-->
+        <!--testing area ends-->
+
+
+
+        <div class="btnGroup" style="display: grid;width: 20px;row-gap: 10px;margin: 50px;">
+          <button id="contestBtn">Contests</button>
+          <button id="groupBtn">Groups</button>
+          <button id="AssignmentBtn">Assignments</button>
+        </div>
+
+    </div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+    <script type="text/javascript" src="./windows.js"></script>
+    <script>
+        var quill = new Quill('#editor', {
+        theme: 'snow'
+        });
+        var quill2 = new Quill('#editor2', {
+        theme: 'snow'
+        });
+    </script>
+  </body>
+</html>

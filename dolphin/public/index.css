@@ -1,0 +1,180 @@
+#winContest-body{
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+#winNavbar{
+    display: flex;
+    background-color:lightseagreen;
+    color: white;
+    height: 30px;
+    align-items: center;
+}
+#winNavbar > p{
+    margin-left:15px;
+}
+
+
+/*groups section starts*/
+.contest-create-group-item{
+}
+
+#groupchooser{
+    margin-top: 20px;
+    max-width: 300px;
+}
+#group-fieldset-main-div{
+    max-height: 400px;
+    overflow-y: scroll;
+
+}
+/*groups section ends*/
+
+/*assignments section starts*/
+
+#assignments-section{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#local-assignments{
+    border: 1px dashed black;
+}
+
+#remote-assignments{
+    border: 1px dashed black;
+}
+#local-assignments > h4, #remote-assignments > h4{
+    padding-left: 20px;
+}
+#local-assignments-items{
+}
+[id^=local-assignment-detail-div-] > p{
+    margin: 0px;
+    padding-left: 40px;
+    background-color: lightgray;
+}
+
+[id^=remote-assignment-detail-div-] > p{ /*start or remote css*/
+    margin: 0px;
+    padding-left: 40px;
+    background-color: lightgray;
+}
+/*assignments section ends*/
+
+
+/*groups window section*/
+#winGroup-body{
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+#add-groups-list-parent{
+    margin: 20px;
+    margin-top: 50px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+}
+#add-users-list-parent{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+#add-users-list{
+    margin: 10px;
+    max-height: 450px;
+    overflow-y:scroll;
+}
+
+[id^=user-list-item-]>label>p{
+    margin: 0px;
+}
+[id^=user-list-item-]{
+    display: flex;
+    margin: 2px 0px;
+}
+
+#contest-edit-link-navbar:hover,
+#contest-create-link-navbar:hover,
+#group-edit-link-navbar:hover,
+#group-create-link-navbar:hover,
+#assignment-create-link-navbar:hover,
+#assignment-edit-link-navbar:hover
+{
+    cursor: pointer;
+}
+
+#edit-contest-chooser{
+    margin:10px;
+}
+
+#winContest-body-edit{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#edit-contest-addremove-groups{
+    margin: 10px;
+}
+[id^=edit-contest-assignment-detail-div-]{
+    margin: 0px;
+    padding-left: 40px;
+    background-color: lightgray;
+}
+[id^=edit-contest-assignment-detail-div-] > p{
+    margin: 0px;
+    padding-left: 40px;
+    background-color: lightgray;
+}
+
+#winGroup-body-edit{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#group-edit-user-list{
+    max-height: 500px;
+    overflow-y: scroll;
+}
+[id^=edit-group-user-list-item-parent-]{
+    display: flex;
+    margin: 2px 0px;
+}
+[id^=edit-group-user-list-item-parent-]>label>p{
+    margin: 0px;
+}
+
+#winAssignment-body{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 10px;
+}
+#winAssignment-body-edit{
+    display:grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    margin: 10px;
+}
+
+#assignment-create-form-main{
+    max-width: 400px;
+}
+[id^=remote-assignment-create-detail-div-]>p{
+    margin: 0px;
+    padding-left: 40px;
+    background-color: lightgray;
+}
+#edit-assignment-contests-list{
+    margin-right: 10px;
+}
+#edit-assignment-contests-list-item{
+    margin: 5px 2px;
+    background-color:aliceblue;
+    padding: 3px;
+}
+#edit-assignment-contests-list-item>p{
+    margin: 0px;
+}
