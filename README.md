@@ -1,10 +1,10 @@
 
-### Component names
+### Component names   
 
-**crow** => Code Execution Engine, .NET 6 long running background service
-**lynx** => Platform, .NET 6 API
-**ibex** => Task Manager, .NET 6 API
-**dolphin** => Platform frontend, Reactjs and JQuery
+**crow** => Code Execution Engine, .NET 6 long running background service   
+**lynx** => Platform, .NET 6 API   
+**ibex** => Task Manager, .NET 6 API   
+**dolphin** => Platform frontend, Reactjs and JQuery   
 **shark** =>  Task Manager frontend, Reactjs
 
 
